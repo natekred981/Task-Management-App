@@ -10,7 +10,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(()  => {
-  }, []);   
+  }, [dispatch]);   
   return (
     <Container maxidth="lg">
       <AppBar  position="static" color="inherit">
