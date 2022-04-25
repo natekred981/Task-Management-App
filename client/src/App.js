@@ -7,9 +7,9 @@ import {Container, AppBar, Typography, Grow, Grid} from '@material-ui/core';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 function App() {  
-  // i am trying to have the dispatch action work when there is an action that happens on the brwoser
+  //every time the page is refreshed, all of the posts and info will be refreshed
   const dispatch = useDispatch();
-  useEffect(() => {
+  useEffect(() => { 
     dispatch({type: 'FETCH_ALL'});
   }, [dispatch])
   return (
