@@ -1,8 +1,9 @@
 import React from "react";
 import Post from "./Post/Post.js";
+import { useSelector } from "react-redux";
 const Posts = () => {
 
-
+    const posts = useSelector((state) => state.posts);
     return (
         <>
         <h1>POST</h1>
