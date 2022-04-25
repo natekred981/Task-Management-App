@@ -1,5 +1,5 @@
 import './App.css';
-import Form from './Components/Form/Form.js';
+import Tabs from './Components/Form/Tabs.js';
 import Posts from './Components/Posts/Posts.js';
 //import { getPosts } from './actions/posts.js';
 import * as api from './api'; 
@@ -13,9 +13,10 @@ function App() {
     dispatch({type: 'FETCH_ALL'});
   }, [dispatch])
   return (
+    <>
     <Container maxidth="lg">
       <AppBar  position="static" color="inherit">
-        <Typography  variant="h2" align="center">Cool Stuff</Typography>
+        <Typography  variant="h2" align="center">Task Management App</Typography>
       </AppBar>
       <Grow in>
         <Container>
@@ -23,11 +24,15 @@ function App() {
             <Posts />
           </Grid>
           <Grid item xs={12} sm={7}>
-            <Form />
+            <Tabs />
           </Grid>
         </Container>
       </Grow>
     </Container>
+
+    
+
+    </>
 
   );
 }
