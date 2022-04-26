@@ -1,10 +1,11 @@
 import { Tab, Tabs } from "react-bootstrap";
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import CreateTask from "./Form.js";
 
 
 const ControlledTabs = () => {
-    const [key, setKey] = useState('home');
+    const [key, setKey] = useState('dashboard');
   
     return (
       <Tabs
@@ -13,14 +14,20 @@ const ControlledTabs = () => {
         onSelect={(k) => setKey(k)}
         className="mb-3"
       >
-        <Tab eventKey="home" title="Home">
-          Here it is
+        <Tab eventKey="dashboard" title="Dashboard">
+          Here it 
         </Tab>
-        <Tab eventKey="profile" title="Profile">
+        <Tab eventKey="calendar" title="Calendar">
+          Yep
+        </Tab>
+        <Tab eventKey="today" title="Today">
           Lets go
         </Tab>
-        <Tab eventKey="contact" title="Contact">
+        <Tab eventKey="this week" title="This Week">
           Yessir
+        </Tab>
+        <Tab eventKey="task" title="Create Task">
+        <CreateTask />
         </Tab>
       </Tabs>
     );

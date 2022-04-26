@@ -18,6 +18,7 @@ function App() {
       <AppBar  position="static" color="inherit">
         <Typography  variant="h2" align="center">Task Management App</Typography>
       </AppBar>
+      
       <Grow in>
         <Container>
           <Grid item xs={12} sm={7}>
