@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Tab, Tabs, Nav, Col, Row, Form } from 'react-bootstrap';
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./styles.css"
 
 
 
@@ -17,7 +18,6 @@ const CreateTask = () => {
                         <input placeholder="Title"></input>
                         <div></div>
                         <label> What type of task?
-                        <div></div>
                             <select 
                                 id="task-type"
                                 value={type}
@@ -34,8 +34,7 @@ const CreateTask = () => {
                             </select>
                             
                         </label>
-                        <textarea placeholder="task description"></textarea>
-                        <div></div>
+                        <textarea placeholder="task description" rows="5" cols="40"></textarea>
                         <Button type="submit">submit task</Button>
                     </div>
                 </form>

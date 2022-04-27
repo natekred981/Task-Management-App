@@ -19,20 +19,8 @@ function App() {
         <Typography  variant="h2" align="center">Task Management App</Typography>
       </AppBar>
       
-      <Grow in>
-        <Container>
-          <Grid item xs={12} sm={7}>
-            <Posts />
-          </Grid>
-          <Grid item xs={12} sm={7}>
-            <Tabs />
-          </Grid>
-        </Container>
-      </Grow>
-    </Container>
-
-    
-
+        <Container> <Tabs /> </Container>
+      </Container>
     </>
 
   );
