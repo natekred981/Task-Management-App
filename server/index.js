@@ -16,7 +16,7 @@ const CONNECT_URL = 'mongodb+srv://natekred2:043bTdJmD7cpUbqr@cluster0.rjuqp.mon
 mongoose.connect(CONNECT_URL);
 const connection = mongoose.connection;
 connection.once('open', () => {
-    console.log("dodekek");
+    console.log("connected to MongoDB");
 });
 app.use('/posts', getPosts);
 app.listen(4001, () => {
