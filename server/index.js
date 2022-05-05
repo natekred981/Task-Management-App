@@ -8,10 +8,6 @@ import getPosts from "./routes/posts.js";
 const app = express();
 const router = express.Router();
 app.use(cors());
-// app.get('/', function(req, res){
-//     res.send("Hello world!");
-//  });
-//app.listen(4000);
 const CONNECT_URL = 'mongodb+srv://natekred2:043bTdJmD7cpUbqr@cluster0.rjuqp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 mongoose.connect(CONNECT_URL);
 const connection = mongoose.connection;

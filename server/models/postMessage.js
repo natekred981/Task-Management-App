@@ -1,9 +1,10 @@
 import mongoose from "mongoose";
 
 const postSchema = mongoose.Schema({
-    title: String,
-    type: String,
-    message: String
+    title: {
+        type: String,
+        required: true
+    }
 });
 
 const PostMessage = mongoose.model('PostMessage', postSchema);
