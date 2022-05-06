@@ -13,15 +13,7 @@ function App() {
     dispatch({type: 'FETCH_ALL'});
   }, [dispatch])
   return (
-    <>
-    <Container maxidth="lg">
-      <AppBar  position="static" color="inherit">
-        <Typography  variant="h2" align="center">Task Management App</Typography>
-      </AppBar>
-      
-        <Container> <Tabs /> </Container>
-      </Container>
-    </>
+    <></>
 
   );
 }

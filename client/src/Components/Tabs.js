@@ -1,7 +1,7 @@
 import { Tab, Tabs } from "react-bootstrap";
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import CreateTask from "./Form.js";
+import CreateTask from "./Form/Form.js";
 
 
 const ControlledTabs = () => {
