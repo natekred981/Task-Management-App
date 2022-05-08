@@ -2,11 +2,17 @@ import { Tab, Tabs } from "react-bootstrap";
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CreateTask from "./Form/Form.js";
+import TaskList from "./Dashboard/Tasks.js";
 
 
 const ControlledTabs = () => {
     const [key, setKey] = useState('dashboard');
-  
+    const tasks = [{
+        id: 'u1',
+        title: 'first post',
+        option: 'news'
+    }];
+
     return (
       <Tabs
         id="controlled-tab-example"
@@ -15,7 +21,7 @@ const ControlledTabs = () => {
         className="mb-3"
       >
         <Tab eventKey="dashboard" title="Dashboard">
-          Here it 
+          <TaskList items={tasks}/>
         </Tab>
         <Tab eventKey="calendar" title="Calendar">
           Yep
