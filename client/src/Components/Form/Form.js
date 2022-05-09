@@ -11,14 +11,10 @@ const CreateTask = () => {
       <div className="form-box">
         <h1>Task Details</h1>
         <form>
-
           <Title />
-
-            <Select />
-            <Description />
-            <Button />
-
-
+          <Select />
+          <Description />
+          <Button />
         </form>
       </div>
     </>

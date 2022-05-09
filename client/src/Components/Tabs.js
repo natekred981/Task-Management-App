@@ -26,7 +26,7 @@ const ControlledTabs = () => {
         className="mb-3"
       >
         <Tab eventKey="dashboard" title="Dashboard">
-          <TaskList items={tasks}/>
+          <TaskList items={tasks} className="dashboard"/>
         </Tab>
         <Tab eventKey="calendar" title="Calendar">
           Yep
