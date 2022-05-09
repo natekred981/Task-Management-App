@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import { Tab, Tabs, Nav, Col, Row, Form } from 'react-bootstrap';
 import Button from "react-bootstrap/Button";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./styles.css"
 
 
 

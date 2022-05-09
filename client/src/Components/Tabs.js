@@ -8,10 +8,15 @@ import TaskList from "./Dashboard/Tasks.js";
 const ControlledTabs = () => {
     const [key, setKey] = useState('dashboard');
     const tasks = [{
-        id: 'u1',
         title: 'first post',
-        option: 'news'
-    }];
+        option: 'news',
+        description: 'fornfr roinfrnqw iqrfifrmio qfrnrjonfqr nkrjf nr norifnmrenf jrnq3fo'
+    },
+  {
+    title: 'second post',
+    option: 'leisure',
+    description: 'fornfr roinfrnqw iqrfifrmio qfrnrjonfqr nkrjf nr norifnmrenf jrnq3fo'
+  }];
 
     return (
       <Tabs
