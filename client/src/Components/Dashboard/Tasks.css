@@ -1,10 +1,12 @@
 .tasks-list {
     list-style-type: none;
     margin: 0 auto;
-    padding: 0;
+    padding: 1rem;
     width: 90%;
     max-width: 50rem;
     display: block;
     justify-content: center;
     flex-wrap: wrap;
+    border-radius: 2rem;
+    background-color: #d4439d;
   }

@@ -11,6 +11,7 @@ const TaskList = props => {
         )
     }
     return (
+      <>
       <ul className="tasks-list">
         {props.items.map((task,key) => (
           <Task
@@ -19,10 +20,10 @@ const TaskList = props => {
           option={task.option}
           description={task.description}
           />
-          
-          
         ))}
       </ul>
+      </>
+      
     );
 }
 

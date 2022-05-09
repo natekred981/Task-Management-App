@@ -1,8 +1,8 @@
 .task-item {
-    margin: 1rem;
-    width: calc(45% - 2rem);
+    width: 100%;
     min-width: 17.5rem;
     text-align: center;
+    margin-bottom: 1rem;
   }
   
   .task-item_info h2 {
@@ -16,18 +16,19 @@
   .task-item_info h3 {
     margin: 0;
     font-size: 2rem;
-    color: brown;
+    color: #9b8a2c;
   }
 
   .task-item_info p{
       margin-top: 1rem;
+      color: #538a81;
   }
   
   .task-item:hover h2,
   .task-item:active h2,
   .task-item:hover h3,
   .task-item:active h3 {
-    color: #0d0e0d;
+    color: #e5e4f0;
   }
   
   
