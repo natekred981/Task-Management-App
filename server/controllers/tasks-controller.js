@@ -22,7 +22,6 @@ export const getTasksByUser = async (req, res, next) => {
         );
     }
     res.json({tasks: tasks.map(task => task.toObject({getters: true}))});
-    //res.json(tasks);
 };
 
 export const postNewTask = async (req, res, next) => {

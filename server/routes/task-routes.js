@@ -7,8 +7,6 @@ const router = express.Router();
 
 router.get('/:cid', getTasksByUser);
 router.post('/',postNewTask);
-router.post('/mongo', createProduct);
-router.get('/mongo/userTasks', getTasksByUser2);
 // router.get('/', getPosts); //these two lines are both connected with posts
 // router.post('/', createPost);
 export default router;

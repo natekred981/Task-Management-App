@@ -3,6 +3,7 @@ import express  from "express";
 import router from "./routes/task-routes.js";
 import bodyParser from "body-parser"; 
 import HttpError from "./models/http-error.js";
+import cors from 'cors';
 
 //this file serves the backend, connects the backend to the database, uses cors
 
@@ -16,7 +17,13 @@ app.use(bodyParser.json()); //this parses requests like a post request into json
 // connection.once('open', () => {
 //     console.log("connected to MongoDB");
 // });
-
+app.use(cors());
+// app.use((req, res, next) => {
+//     res.setHeader('Access-Control-Allow-Orign', '*');
+//     res.setHeader('Access-Control-Allow-Orign', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+//     res.setHeader('Access-Control-Allow-Orign', 'GET, POST, PATCH, DELETE');
+//     next();
+// })
 app.use('/api/tasks',router); 
 app.use((req, res, next) => {
     throw new HttpError('could not find the route', 404);
