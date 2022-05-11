@@ -28,7 +28,13 @@ app.use((error, req, res, next) => { //function will execute if any middleware g
     res.status(error.code || 500) //either 400 or 500 error
     res.json({message: error.message || "An unknown error occured!"});
 });
-app.listen(4001, () => {
-    console.log("server running");
-});
 
+
+const CONNECT_URL = 'mongodb+srv://natekred2:043bTdJmD7cpUbqr@cluster0.rjuqp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+mongoose.connect(CONNECT_URL)
+.then(() => {
+    app.listen(4001);
+    console.log("Connected to the database");
+}).catch(() => {
+    console.log("Connection failed!")
+});

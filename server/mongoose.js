@@ -1,13 +1,6 @@
 import mongoose from "mongoose";
 import PostMessage from "./models/postMessage.js";
 
-const CONNECT_URL = 'mongodb+srv://natekred2:043bTdJmD7cpUbqr@cluster0.rjuqp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
-mongoose.connect(CONNECT_URL)
-.then(() => {
-    console.log("Connected to the database")
-}).catch(() => {
-    console.log("Connection failed!")
-});
 
 export const getTasksByUser2 = async (req, res, next) => {
     const products = await PostMessage.find().exec();
