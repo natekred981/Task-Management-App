@@ -9,28 +9,15 @@ import cors from 'cors';
 
 const app = express();
 app.use(bodyParser.json()); //this parses requests like a post request into json
-//app.use(cors()); //allows you to make requests from one website to another website in the browser
-
-// const CONNECT_URL = 'mongodb+srv://natekred2:043bTdJmD7cpUbqr@cluster0.rjuqp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
-// mongoose.connect(CONNECT_URL);
-// const connection = mongoose.connection;
-// connection.once('open', () => {
-//     console.log("connected to MongoDB");
-// });
 app.use(cors());
-// app.use((req, res, next) => {
-//     res.setHeader('Access-Control-Allow-Orign', '*');
-//     res.setHeader('Access-Control-Allow-Orign', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-//     res.setHeader('Access-Control-Allow-Orign', 'GET, POST, PATCH, DELETE');
-//     next();
-// })
+
 app.use('/api/tasks',router); 
 app.use((req, res, next) => {
-    throw new HttpError('could not find the route', 404);
+    throw new HttpError('could not find the route', 404); //this error will go into the error app.use below it
 });
 app.use((error, req, res, next) => { //function will execute if any middleware gets an error
     if (res.headerSent){ //if a response has been sent
-        return next(error);
+        return next(error); //a little bit confused about these errors
     }
     res.status(error.code || 500) //either 400 or 500 error
     res.json({message: error.message || "An unknown error occured!"});

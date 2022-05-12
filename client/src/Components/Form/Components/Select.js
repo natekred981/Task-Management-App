@@ -3,13 +3,12 @@ import React, { useState } from "react";
 
 import './Select.css';
 
-const Select = () => {
-    const [type, setType] = useState("excercise")
-    const handleChange = (e =>  setType(e.target.value));
+const Select = (props) => {
+  //name={props.name}
   return (
     <React.Fragment>
       <label> What type of task? </label>
-      <select id="task-type" value={type} onChange={handleChange}>
+      <select name={props.name} id="task-type" value={props.value} onChange={props.onChange}>
         <option value="excercise">Excercise</option>
         <option value="study time">Study Time</option>
         <option value="cooking">Coconut</option>
