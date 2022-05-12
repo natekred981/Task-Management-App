@@ -1,22 +1,21 @@
 import { Tab, Tabs } from "react-bootstrap";
-import { useState } from "react";
+import React, {useState, useEffect} from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CreateTask from "./Form/Form.js";
 import TaskList from "./Dashboard/Tasks.js";
 
 
 const ControlledTabs = () => {
+    const [loadedTasks, setLoadedTasks] = useState();
+    useEffect(() => {
+      const sendRequest = async () => {
+        const response = await fetch('http://localhost:4001/api/tasks/4');
+        const responseData  = await response.json();
+        setLoadedTasks(responseData.tasks);
+      }
+      sendRequest();
+    }, [])
     const [key, setKey] = useState('dashboard');
-    const tasks = [{
-        title: 'first post',
-        option: 'news',
-        description: 'fornfr roinfrnqw iqrfifrmio qfrnrjonfqr nkrjf nr norifnmrenf jrnq3fo'
-    },
-  {
-    title: 'second post',
-    option: 'leisure',
-    description: 'fornfr roinfrnqw iqrfifrmio qfrnrjonfqr nkrjf nr norifnmrenf jrnq3fo'
-  }];
 
     return (
       <Tabs
@@ -26,7 +25,7 @@ const ControlledTabs = () => {
         className="mb-3"
       >
         <Tab eventKey="dashboard" title="Dashboard">
-          <TaskList items={tasks} />
+          {loadedTasks && <TaskList items={loadedTasks} />}
         </Tab>
         <Tab eventKey="calendar" title="Calendar">
           Yep

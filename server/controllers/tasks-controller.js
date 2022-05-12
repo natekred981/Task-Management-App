@@ -34,6 +34,7 @@ export const postNewTask = async (req, res, next) => {
     });
     try {
         await createdTask.save(createdTask);
+        
     }
     catch (err){
         const error = new HttpError("Creating task failed, please try again", 500);
