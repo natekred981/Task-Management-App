@@ -1,8 +1,10 @@
-import { Tab, Tabs } from "react-bootstrap";
+import {Tab, Tabs } from "react-bootstrap";
 import React, {useState, useEffect} from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CreateTask from "./Form/Form.js";
 import TaskList from "./Dashboard/Tasks.js";
+import SubmitButton from "../shared/components/SubmitButton.js";
+import CreateButton from "../shared/components/CreateButton.js";
 
 
 const ControlledTabs = () => {
@@ -18,6 +20,10 @@ const ControlledTabs = () => {
     const [key, setKey] = useState('dashboard');
 
     return (
+      <>
+      <header>
+        <CreateButton />
+      </header>
       <Tabs
         id="controlled-tab-example"
         activeKey={key}
@@ -27,19 +33,11 @@ const ControlledTabs = () => {
         <Tab eventKey="dashboard" title="Dashboard">
           {loadedTasks && <TaskList items={loadedTasks} />}
         </Tab>
-        <Tab eventKey="calendar" title="Calendar">
-          Yep
-        </Tab>
-        <Tab eventKey="today" title="Today">
-          Lets go
-        </Tab>
-        <Tab eventKey="this week" title="This Week">
-          Yessir
-        </Tab>
         <Tab eventKey="task" title="Create Task">
         <CreateTask />
         </Tab>
       </Tabs>
+      </>
     );
   }
 export default ControlledTabs;

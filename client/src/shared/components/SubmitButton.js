@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-import './Button.css';
+import './SubmitButton.css';
 
-const Button = props => {
+const SubmitButton = props => {
   return (
     <button
       className= 'button'
@@ -14,4 +13,4 @@ const Button = props => {
   );
 };
 
-export default Button;
+export default SubmitButton;
