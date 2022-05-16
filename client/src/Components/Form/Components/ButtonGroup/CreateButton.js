@@ -7,7 +7,7 @@ const CreateButton = (props) => {
         <button
           className= 'button-create'
           type='button'
-          onClick={props.onClick}
+         // onClick={props.onClick}
         >
           Create Task
         </button>

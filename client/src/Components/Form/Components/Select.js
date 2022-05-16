@@ -7,8 +7,8 @@ const Select = (props) => {
   //name={props.name}
   return (
     <React.Fragment>
-      <label> What type of task? </label>
-      <select name={props.name} id="task-type" value={props.value} onChange={props.onChange}>
+      <label className="select-label"> What type of task? </label>
+      <select name={props.name} className="select" value={props.value} onChange={props.onChange}>
         <option value="excercise">Excercise</option>
         <option value="study time">Study Time</option>
         <option value="cooking">Coconut</option>

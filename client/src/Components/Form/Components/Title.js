@@ -3,7 +3,8 @@ import './Title.css';
 
 const Title = (props) => {
     return (
-        <input name={props.name} placeholder="Title" 
+        <input className="title"
+        name={props.name} placeholder="Title" 
                onChange={props.onChange} value={props.value}></input>
     );
 }

@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "../../shared/components/Card";
+import { Modal } from "react-bootstrap";
 import './Task.css';
 
 const Task = (props) => {
+  const [showTask, setShowTask] = useState(false);
+  const openTask = () => setShowTask(true);
+  const closeTask = () => setShowTask(false);
   return (
     <li className="task-item">
       <Card>

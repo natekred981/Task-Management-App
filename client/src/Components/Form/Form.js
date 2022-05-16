@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import CreateButton from "../../shared/components/CreateButton";
 import SubmitButton from "../../shared/components/SubmitButton";
+import Buttons from "./Components/ButtonGroup/ButtonGroup";
 import Description from "./Components/Desription";
 import Select from "./Components/Select";
 import Title from "./Components/Title";
@@ -48,13 +50,15 @@ const CreateTask = (props) => {
   return (
     <>
       <div className='form-box'>
-        <h1>Task Details</h1>
-        <form onSubmit={handleSubmit}>
+        <form classname="form" onSubmit={handleSubmit}>
           <Title name={[schemaNames[0]]} onChange={handleChange} value={state.title}/>
           <Select name={[schemaNames[1]]} onChange={handleChange} value={state.option}/>
           <Description name={schemaNames[2]} onChange= {handleChange} value={state.description}/>
-          <SubmitButton />
-        </form>
+          {/* <div style={{display: 'flex'}}>
+            <CreateButton />
+            <SubmitButton />
+          </div>*/}
+  </form> 
       </div>
     </>
   );

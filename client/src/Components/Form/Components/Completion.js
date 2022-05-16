@@ -1,8 +1,8 @@
 import React from "react";
-import * from 'date-time';
+import DateTime from 'date-time';
 
 const Completion = (props) => {
     return (
-<div></div>
+        <DateTime></DateTime>
     );
 };

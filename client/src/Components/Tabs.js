@@ -5,6 +5,7 @@ import CreateTask from "./Form/Form.js";
 import TaskList from "./Dashboard/Tasks.js";
 import SubmitButton from "../shared/components/SubmitButton.js";
 import CreateButton from "../shared/components/CreateButton.js";
+import Modal from "./Form/Modal.js";
 
 
 const ControlledTabs = () => {
@@ -18,11 +19,13 @@ const ControlledTabs = () => {
       sendRequest();
     }, [])
     const [key, setKey] = useState('dashboard');
+    const [showForm, setShowForm] = useState(false);
+
 
     return (
       <>
       <header>
-        <CreateButton />
+        <CreateButton onClick={() => setShowForm(true)}/>
       </header>
       <Tabs
         id="controlled-tab-example"
@@ -32,9 +35,13 @@ const ControlledTabs = () => {
       >
         <Tab eventKey="dashboard" title="Dashboard">
           {loadedTasks && <TaskList items={loadedTasks} />}
+          {!loadedTasks && <h1>No ongoing tasks</h1>}
         </Tab>
         <Tab eventKey="task" title="Create Task">
         <CreateTask />
+        </Tab>
+        <Tab eventKey='a' title='A'>
+          <Modal show={showForm}/>
         </Tab>
       </Tabs>
       </>

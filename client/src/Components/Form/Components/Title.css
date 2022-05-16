@@ -1,15 +1,17 @@
 .title {
-  border: 0.2rem solid #d9d9d9;
+  border: 0.15rem solid black;
   border-radius: 0.5rem;
   box-sizing: border-box;
-  padding: 1rem;
+  padding: 0.2rem;
   width: 100%;
 
 }
 
   input::placeholder {
-    color: rgb(17, 16, 16);
+    color: gray;
     width: 100%;
   }
+
+
   
 
