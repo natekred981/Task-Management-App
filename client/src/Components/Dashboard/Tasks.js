@@ -1,4 +1,4 @@
-import Task from "./Task.js";
+import Task from "./Components/Task";
 
 import './Tasks.css'
 const TaskList = props => {
@@ -8,6 +8,7 @@ const TaskList = props => {
         {props.items.map((task,key) => (
           <Task
           key={key}
+          id={task.id}
           title={task.title}
           option={task.option}
           description={task.description}

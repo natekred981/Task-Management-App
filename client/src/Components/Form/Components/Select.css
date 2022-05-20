@@ -15,7 +15,3 @@
     margin-top: 1rem;
     margin-bottom: 0.1rem;
   }
-
-  .select::placeholder {
-      color: gray;
-  }
