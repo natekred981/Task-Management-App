@@ -28,7 +28,7 @@ const CONNECT_URL = 'mongodb+srv://natekred2:043bTdJmD7cpUbqr@cluster0.rjuqp.mon
 mongoose.connect(CONNECT_URL)
 .then(() => {
     app.listen(4001);
-    console.log("Connected to the database"); 
+    console.log("Connected to the database");
 }).catch(() => {
     console.log("Connection failed!")
 });

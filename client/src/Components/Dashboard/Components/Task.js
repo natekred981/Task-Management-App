@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Card from "../../../shared/components/Card";
-import { Modal } from "react-bootstrap";
 import './Task.css';
 
 const Task = (props) => {

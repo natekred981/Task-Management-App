@@ -1,15 +1,14 @@
 import HttpError from "../models/http-error.js";
 import bodyParser from "body-parser";
-import * as uuid from 'uuid';
 import PostMessage from "../models/postMessage.js";
 //getPosts is designed to grab from the schema and see if we are successfully grabbing the schema
 //createPost is designed to save a post that we create by getting the body of the 
 //request we made, and then saving that body to somewhere
 export const getTasksByUser = async (req, res, next) => {
-    const taskId = req.params.cid;
-    let tasks;
+    // const taskId = req.params.cid;
+    // let tasks;
     try {
-        tasks = await PostMessage.find({creator: taskId});
+        tasks = await PostMessage.find({});
     }
     catch(err){
         const error = new HttpError("Creating task failed, please try again", 500);
@@ -25,12 +24,10 @@ export const getTasksByUser = async (req, res, next) => {
 };
 
 export const postNewTask = async (req, res, next) => {
-    const {title, option, description, creator} = req.body;
+    const {title, description } = req.body;
     const createdTask = new PostMessage({
         title,
-        option,
         description,
-        creator
     });
     try {
         await createdTask.save(createdTask);

@@ -1,7 +1,6 @@
 import React from "react";
-import Button from 'react-bootstrap/Button';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
+import Button from "../../shared/components/Button";
+import { Button as Button2} from "react-bootstrap";
 import './Modal.css';
 import { Modal } from "react-bootstrap";
 import CreateTask from "./Form";
@@ -21,8 +20,9 @@ const UserModal = props => {
   
 
   <Modal.Footer>
-    <Button onClick={props.onCancel} type="button" variant="secondary" >Close</Button>
-    <Button type="submit" variant="primary" onSubmit={props.onSubmit}>Save changes</Button>
+    <Button2 onClick={props.onCancel} type="button" variant="secondary" >Close</Button2>
+    <Button type="submit"  >Save changes</Button>
+    <button type="submit" onSubmit={props.onSubmit}>ADD TASK</button>
   </Modal.Footer>
   </Modal>
     );
