@@ -6,12 +6,12 @@ import PostMessage from "../models/postMessage.js";
 //request we made, and then saving that body to somewhere
 export const getTasksByUser = async (req, res, next) => {
     // const taskId = req.params.cid;
-    // let tasks;
+    let tasks;
     try {
         tasks = await PostMessage.find({});
     }
     catch(err){
-        const error = new HttpError("Creating task failed, please try again", 500);
+        const error = new HttpError("No tasks found, please try again", 500);
         return  next(error);
     }
      

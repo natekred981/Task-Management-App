@@ -1,34 +1,38 @@
 .task-item {
-    width: 100%;
-    min-width: 17.5rem;
+    margin: 1rem 0
+  }
+
+  .task-item__content{
+    padding: 0
+  }
+
+  .task-item_info {
+    padding: 1rem;
     text-align: center;
-    margin-bottom: 1rem;
   }
   
-  .task-item_info h2 {
-    font-size: 3rem;
+  .task-item_info h2,
+  .task-item_info h3,
+  .task-item_info p {
     margin: 0 0 0.5rem 0;
-    font-weight: normal;
-    color: #4b4941;
-    
   }
 
-  .task-item_info h3 {
-    margin: 0;
-    font-size: 2rem;
-    color: #9b8a2c;
+  .task-item__actions {
+    padding: 1rem;
+    text-align: center;
+    border-top: 1px solid #ccc;
   }
 
-  .task-item_info p{
-      margin-top: 1rem;
-      color: #538a81;
+  .task-item__modal-content {
+    padding: 0;
+  }
+
+  .task-item__modal-actions {
+    text-align: right;
   }
   
-  .task-item:hover h2,
-  .task-item:active h2,
-  .task-item:hover h3,
-  .task-item:active h3 {
-    color: #e5e4f0;
+  .task-item__actions button,
+  .task-item__actions a {
+    margin: 0.5rem;
   }
-  
   

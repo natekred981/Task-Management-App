@@ -10,9 +10,7 @@ const TaskList = props => {
           key={key}
           id={task.id}
           title={task.title}
-          option={task.option}
           description={task.description}
-          completion={task.completion}
           />
         ))}
       </ul>

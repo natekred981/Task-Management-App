@@ -1,8 +1,7 @@
 import React, { useState, useCallback, useReducer } from "react";
-import Button from "../../shared/components/Button";
-import Input from "../../shared/components/Input";
+import Button from "../../shared/components/UiElements/Button";
+import Input from "../../shared/components/UiElements/Input";
 import { VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE } from "../../shared/utils/validators";
-import Select from "./Components/Select";
 import "./Form.css";
 
 
@@ -102,7 +101,6 @@ const CreateTask = (props) => {
             validators={[VALIDATOR_REQUIRE()]} 
             onInput={inputHandler}
             />
-          <Select name="option" onChange={props.onChange} value={props.value} />
           <Input 
             label="Description"
             errorText="Please enter a valid description (at least 5 characters)"
