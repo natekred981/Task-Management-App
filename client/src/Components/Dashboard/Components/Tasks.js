@@ -1,4 +1,4 @@
-import Task from "./Components/Task";
+import Task from "./Task";
 
 import './Tasks.css'
 const TaskList = props => {
