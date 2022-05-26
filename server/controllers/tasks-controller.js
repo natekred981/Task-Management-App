@@ -27,7 +27,7 @@ export const postNewTask = async (req, res, next) => {
     const {title, description } = req.body;
     const createdTask = new PostMessage({
         title,
-        description,
+        description
     });
     try {
         await createdTask.save(createdTask);
