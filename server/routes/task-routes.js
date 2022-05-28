@@ -1,9 +1,11 @@
 import express from 'express';
-import { getTasksByUser, postNewTask } from '../controllers/tasks-controller.js';
+import { getTasks, postNewTask } from '../controllers/tasks-controller.js';
 
 const router = express.Router();
-
-router.get('/', getTasksByUser);
+router.get('/:tid');
+router.get('/', getTasks);
+router.get('/user/:uid');
 router.post('/',postNewTask);
+router.patch('/')
 
 export default router;
