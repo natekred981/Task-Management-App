@@ -1,5 +1,7 @@
 import HttpError from "../models/http-error.js";
 import PostMessage from "../models/postMessage.js";
+import * as uuid from 'uuid';
+import { validationResult } from "express-validator";
 
 //getPosts is designed to grab from the schema and see if we are successfully grabbing the schema
 //createPost is designed to save a post that we create by getting the body of the 
@@ -43,8 +45,14 @@ export const getTasks = async (req, res, next) => {
 };
 
 export const postNewTask = async (req, res, next) => {
+    const errrors = validationResult(req);
+    if (!errrors.isEmpty()){
+        const error =  new HttpError('Invalid inputs passed, pleae check your data', 422);
+        return next(error);
+    }
     const {title, description, creator } = req.body;
     const createdTask = new PostMessage({
+        id: uuid.v4(),
         title,
         description,
         creator
@@ -59,6 +67,31 @@ export const postNewTask = async (req, res, next) => {
     }
     
     res.status(201).json({message: createdTask});
+
+};
+
+export const updateTask = async (req, res, next) => {
+    const errrors = validationResult(req);
+    if (!errrors.isEmpty()){
+        const error =  new HttpError('Invalid inputs passed, pleae check your data', 422);
+        return next(error);
+    }
+    const {title, description} = req.body;
+    const taskId = req.params.tid;
+    try {
+        const updateTask = await PostMessage.find(t => t.id === taskId); 
+        const taskIndex = await PostMessage.findIndex(t => t.id === taskId) 
+        updateTask.title = title;
+        updateTask.description = description;
+    }
+    catch (err) {
+        const error = new HttpError("Updating task failed", 404);
+        return next(error);
+    }
+    res.status(201).json({message: updateTask});
+};
+
+export const deleteTask = async (req, res, next) => {
 
 };
 
