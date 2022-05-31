@@ -4,6 +4,7 @@ import router from "./routes/task-routes.js";
 import bodyParser from "body-parser"; 
 import HttpError from "./models/http-error.js";
 import cors from 'cors';
+import signup_router from "./routes/signup-routes.js";
 
 //this file serves the backend, connects the backend to the database, uses cors
 
@@ -12,6 +13,7 @@ app.use(bodyParser.json()); //this parses requests like a post request into json
 app.use(cors());
 
 app.use('/api/tasks',router); 
+app.use('/api/user', signup_router);
 app.use((req, res, next) => {
     throw new HttpError('could not find the route', 404); //this error will go into the error app.use below it
 });
