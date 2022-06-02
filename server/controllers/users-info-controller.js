@@ -12,7 +12,7 @@ export const signup = async (req, res, next) => {
         return next(error);
     }
 
-    const { name, email, password, tasks } = req.body;
+    const { name, email, password } = req.body;
 
     let existingUser;
     try {
@@ -38,7 +38,7 @@ export const signup = async (req, res, next) => {
         name,
         email,
         password,
-        tasks
+        tasks: []
     });
 
     try {

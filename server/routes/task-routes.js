@@ -1,10 +1,10 @@
 import express from 'express';
 import { check } from 'express-validator';
-import { deleteTask, getTaskByTaskId, postNewTask, updateTask } from '../controllers/tasks-controller.js';
+import { deleteTask, getTaskByUserId, postNewTask, updateTask } from '../controllers/tasks-controller.js';
 
 const router = express.Router();
 //router.get('/:tid');
-router.get('/' , getTaskByTaskId);
+router.get('/:cid' , getTaskByUserId);
 router.post('/', [
                 check('title').not().isEmpty(),
                 check('description').isLength({min: 5}),    
