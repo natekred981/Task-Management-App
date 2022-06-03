@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import Card from "../../shared/components/UiElements/Card";
 import TaskList from "./Components/Tasks";
 
 
@@ -16,7 +17,7 @@ const HomePage = () => {
     return (
       <>
           {loadedTasks && <TaskList items={loadedTasks} />}
-          {!loadedTasks && <h1>No ongoing tasks</h1>}
+          {!loadedTasks && <Card>No ongoing tasks</Card>}
       </>
     );
   }
