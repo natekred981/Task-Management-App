@@ -5,7 +5,7 @@ import Card from "../../shared/components/UiElements/Card";
 import Input from "../../shared/components/UiElements/Input";
 import { useForm } from "../../shared/hooks/form-hook";
 import { VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE } from "../../shared/utils/validators";
-import './Form.css';
+import './CreateTask.css';
 
 const Practice = [{
     id: 'p1',

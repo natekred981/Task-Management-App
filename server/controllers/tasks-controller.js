@@ -10,7 +10,7 @@ import mongoose from "mongoose";
 //request we made, and then saving that body to somewhere
 
 export const getTaskByUserId = async (req, res, next) => {
-    const userId = req.params.cid;
+    const userId = req.params.gid;
     let userWithTasks;
     try {
         userWithTasks = await user.findById(userId).populate('tasks');
@@ -83,7 +83,7 @@ export const updateTask = async (req, res, next) => {
   }
 
   const { title, description } = req.body;
-  const taskId = req.params.tid;
+  const taskId = req.params.pid;
   console.log(taskId);
 
   let task;
@@ -114,7 +114,7 @@ export const updateTask = async (req, res, next) => {
 };
 
 export const deleteTask = async (req, res, next) => {
-    const taskId = req.params.tid;
+    const taskId = req.params.did;
 
   let task;
   try {

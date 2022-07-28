@@ -8,12 +8,12 @@ const NavLinks = props => {
   const auth = useContext(AuthContext);
   return <ul className="nav-links">
     {auth.isLoggedIn && (<li>
-      <NavLink to="/" exact>ALL TASKS</NavLink>
+      <NavLink to={`/${auth.userId}/tasks`} exact>ALL TASKS</NavLink>
     </li>)}
     
       {auth.isLoggedIn && (
       <li>
-        <NavLink to="/u1">CREATE TASK</NavLink>
+        <NavLink to="/u1" >CREATE TASK</NavLink>
     </li>
         )}
     {!auth.isLoggedIn && (
