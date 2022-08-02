@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Card from "../../../shared/components/UiElements/Card";
 import './Task.css';
 import Modal from "../../../shared/components/UiElements/Modal";
 import Button from "../../../shared/components/UiElements/Button";
+import { AuthContext } from "../../../shared/context/auth-context";
+import { useHttpClient } from "../../../shared/hooks/http-hook";
+import ErrorModal from "../../../shared/components/UiElements/ErrorModal";
 
 const Task = (props) => {
+  const auth = useContext(AuthContext);
+  const { isLoading, error, sendRequest, clearError} = useHttpClient();
   const [showTask, setShowTask] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const openTask = () => setShowTask(true);
@@ -18,6 +23,7 @@ const Task = (props) => {
   //<Button danger>DELETE</Button>
   return (
     <React.Fragment>
+      <ErrorModal error={error} onClear={clearError} />
       <Modal 
         show={showTask} 
         onCancel={closeTask} 
@@ -50,8 +56,13 @@ const Task = (props) => {
           <p>{props.description}</p>
         </div>
         <div className="task-item__actions">
-          <Button to={`/${props.id}`}>EDIT</Button>
-          <Button inverse onClick={showDeleteWarningHandler}>DELETE</Button>
+          {auth.isLoggedIn && (
+            <Button to={`/update/${props.id}`}>EDIT</Button>
+          )}
+          {auth.isLoggedIn && (
+            <Button inverse onClick={showDeleteWarningHandler}>DELETE</Button>
+          )}
+          
         </div>
       </Card>
     </li>

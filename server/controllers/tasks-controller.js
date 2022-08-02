@@ -9,7 +9,7 @@ import mongoose from "mongoose";
 //createPost is designed to save a post that we create by getting the body of the 
 //request we made, and then saving that body to somewhere
 
-export const getTaskByUserId = async (req, res, next) => {
+export const getTasksByUserId = async (req, res, next) => {
     const userId = req.params.gid;
     let userWithTasks;
     try {
@@ -26,6 +26,30 @@ export const getTaskByUserId = async (req, res, next) => {
         );
     }
     res.json({tasks: userWithTasks.tasks.map(task => task.toObject({getters: true}))});
+};
+
+export const getTaskbyId = async (req, res, next) => {
+  const taskId = req.params.taskId;
+  let task;
+  try {
+    task = await Task.findById(taskId);
+  }
+  catch(err){
+    const error = new HttpError(
+      'Something went wrong, could not find the task',
+      500
+    );
+    return next(error);
+  };
+
+  if (!task) {
+    const error = new HttpError(
+      'Could not find task for the provided id',
+      404
+    )
+    return next(error);
+  }
+  res.json({ task: task.toObject({ getters: true})});
 };
 
 export const postNewTask = async (req, res, next) => {
