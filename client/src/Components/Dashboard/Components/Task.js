@@ -6,35 +6,31 @@ import Button from "../../../shared/components/UiElements/Button";
 import { AuthContext } from "../../../shared/context/auth-context";
 import { useHttpClient } from "../../../shared/hooks/http-hook";
 import ErrorModal from "../../../shared/components/UiElements/ErrorModal";
+import LoadingSpinner from "../../../shared/components/UiElements/LoadingSpinner";
+import { useHistory } from "react-router-dom";
 
 const Task = (props) => {
   const auth = useContext(AuthContext);
+  const history = useHistory();
   const { isLoading, error, sendRequest, clearError} = useHttpClient();
-  const [showTask, setShowTask] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
-  const openTask = () => setShowTask(true);
-  const closeTask = () => setShowTask(false);
   const showDeleteWarningHandler = () => setShowConfirmModal(true);
   const cancelDeleteHandler = () => setShowConfirmModal(false);
-  const confirmDeleteHandler = () => {
+  const confirmDeleteHandler = async () => {
     setShowConfirmModal(false);
-    console.log("Deleting ....");
+    try {
+      await sendRequest(`http://localhost:4001/api/tasks/${props.id}`,
+                  'DELETE');
+      props.onDelete(props.id);
+      history.push(`/${auth.userId}/tasks`);
+    }
+    catch (err){};
   }
   //<Button danger>DELETE</Button>
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
-      <Modal 
-        show={showTask} 
-        onCancel={closeTask} 
-        header="NEW TASK" 
-        contentClass="task-item__modal-content" 
-        footeClass="task-item__modal-actions"
-        footer={<Button onClick={closeTask}>CLOSE</Button>}
-
-        >
-          You have reached the modal!
-          </Modal>
+      
       <Modal
       show={showConfirmModal}
       onCancel={cancelDeleteHandler}
@@ -51,6 +47,7 @@ const Task = (props) => {
       </Modal>
     <li className="task-item">
       <Card className="task-item__content">
+        {isLoading && <LoadingSpinner asOverlay />}
         <div className="task-item_info">
           <h2>{props.title}</h2>
           <p>{props.description}</p>

@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Button from '../../shared/components/UiElements/Button';
 import Card from '../../shared/components/UiElements/Card';
 import ErrorModal from '../../shared/components/UiElements/ErrorModal';
@@ -13,6 +14,7 @@ import './Auth.css';
 
 const Auth = () => {
     const auth = useContext(AuthContext);
+    const history = useHistory();
     const [isLoginMode, setIsLoginMode] = useState(true);
     const { isLoading, error, sendRequest, clearError } = useHttpClient();
   
@@ -65,9 +67,12 @@ const Auth = () => {
             email: formState.inputs.email.value,
             password: formState.inputs.password.value
             }), 
-            {"Content-Type": 'application/json'}
+            {'Content-Type': 'application/json'}
           );
+      console.log(response.user.id);
       auth.login(response.user.id);
+      //history.push(`/${auth.userId}/tasks`);
+      
         }    
           catch (err) {}
         
@@ -85,7 +90,9 @@ const Auth = () => {
           {
             'Content-Type': 'application/json'
           })
-          auth.login(response.user.id); 
+          //auth.login(response.user.id);
+          
+         // history.push(`/${auth.userId}/tasks`);
     
         } catch (err) {};
       }

@@ -10,7 +10,17 @@ import signup_router from "./routes/signup-routes.js";
 
 const app = express();
 app.use(bodyParser.json()); //this parses requests like a post request into json
-app.use(cors());
+ // enable cors to the server
+//  const corsOpt = {
+//     origin: process.env.CORS_ALLOW_ORIGIN || '*', // this work well to configure origin url in the server
+//     methods: ['GET', 'PUT', 'POST', 'DELETE', 'OPTIONS'], // to works well with web app, OPTIONS is required
+//     allowedHeaders: ['Content-Type', 'Authorization'] // allow json and token in the headers
+// };
+// app.use(cors(corsOpt)); // cors for all the routes of the application
+// app.options('*', cors(corsOpt)); // automatic cors gen for HTTP verbs in all routes, This can be redundant but I kept to be sure that will always work
+app.use(cors());  
+
+
 
 app.use('/api/tasks',router); 
 app.use('/api/user', signup_router);

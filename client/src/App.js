@@ -28,13 +28,13 @@ function App() {
           <Route path="/:userId/tasks" exact>
             <HomePage />
           </Route>
-          <Route exact path="/u1">
+          <Route exact path="/:userId/create/task">
             <CreateTask />
           </Route>
           <Route path="/update/:taskId">
             <UpdateTask />
           </Route>
-          <Redirect to="/" />
+          <Redirect to="/:userId/tasks" />
       </Switch>
     );
   }

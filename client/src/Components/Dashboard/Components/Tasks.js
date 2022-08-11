@@ -1,6 +1,7 @@
 import Task from "./Task";
 
-import './Tasks.css'
+import './Tasks.css';
+
 const TaskList = props => {
     return (
       <>
@@ -11,6 +12,7 @@ const TaskList = props => {
           id={task.id}
           title={task.title}
           description={task.description}
+          onDelete={props.onDeleteTask}
           />
         ))}
       </ul>
