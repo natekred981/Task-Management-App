@@ -59,7 +59,7 @@ export const signup = async (req, res, next) => {
         const error = new HttpError('Signing up failed, please try again', 500);
         return next(err);
     }
-    
+
 
     res.status(201).json({user: createdUser.toObject({getters: true})});
 

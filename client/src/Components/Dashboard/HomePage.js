@@ -12,12 +12,11 @@ const HomePage = () => {
     const [loadedTasks, setLoadedTasks] = useState();
     const  userId  = useParams().userId;
     useEffect(() => {
-            
         const fetchUsers = async () => {
           try {
           const response = await sendRequest(`http://localhost:4001/api/tasks/${userId}`);
           setLoadedTasks(response.tasks);        
-        } catch (err) { };
+        } catch (err) {};
       };
         fetchUsers(); 
     }, [sendRequest, userId]);
@@ -26,19 +25,17 @@ const HomePage = () => {
       setLoadedTasks(prevTasks => 
           prevTasks.filter(task => task.id !== deletedTaskId));
     }
-
-    if (!isLoading && loadedTasks && loadedTasks.length === 0){
-      return <Card>No Ongoing Tasks</Card>;
+    if (!loadedTasks && isLoading) {
+      return (
+           <div className="center"><LoadingSpinner /></div> 
+      );
     }
-    
     
     return (
       <>
           <React.Fragment>
             <ErrorModal error={error} onClear={clearError} />
-          {isLoading && !loadedTasks && <div className="center"><LoadingSpinner /></div>}
           {!isLoading && loadedTasks && <TaskList items={loadedTasks} onDeleteTask={placeDeleteHandler} />}
-          
           </React.Fragment>
 
       </>

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useContext, useState } from "react";
 import { BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom';
 import HomePage from "./Components/Dashboard/HomePage.js";
 import CreateTask from "./Components/CreateTaskForm/CreateTask.js";
@@ -8,8 +8,9 @@ import Auth from "./Components/Authorization/Auth.js";
 import { AuthContext } from "./shared/context/auth-context.js";
 
 function App() {
+  const auth = useContext(AuthContext);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userId, setUserId] = useState(false);
+  const [userId, setUserId] = useState(null);
   
   const login = useCallback((uid) =>{
     setIsLoggedIn(true);
@@ -34,7 +35,7 @@ function App() {
           <Route path="/update/:taskId">
             <UpdateTask />
           </Route>
-          <Redirect to="/:userId/tasks" />
+          <Redirect to="/" />
       </Switch>
     );
   }

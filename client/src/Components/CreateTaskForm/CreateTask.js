@@ -33,12 +33,7 @@ const CreateTask = (props) => {
   const history = useHistory();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formState.inputs)
-    const formData = new FormData();
     try {
-      formData.append('title', formState.inputs.title.value);
-      formData.append('description', formState.inputs.description.value);
-      formData.append('creator', auth.userId);
        await sendRequest(
         'http://localhost:4001/api/tasks', 
           'POST',
@@ -48,10 +43,6 @@ const CreateTask = (props) => {
             creator: auth.userId
           }),
           {'Content-Type': 'application/json'}
-          // formData.append('title', formState.inputs.title.value);
-          // formData.append('description', formState.inputs.description.value);
-          // formData.append('creator', auth.userId);
-          //{Authorization: 'Bearer ' + auth.token}
         );
         history.push(`/${auth.userId}/tasks`);
     }
