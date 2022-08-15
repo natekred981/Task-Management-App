@@ -2,6 +2,7 @@ import { validationResult } from 'express-validator';
 import HttpError from '../models/http-error.js';
 import user from '../models/user.js';
 import bcrypt from 'bcryptjs';
+import jwt from "jsonwebtoken";
 
 
 
@@ -9,10 +10,9 @@ import bcrypt from 'bcryptjs';
 export const signup = async (req, res, next) => {
     const errrors = validationResult(req);
     if (!errrors.isEmpty()){
-        const error =  new HttpError('Invalid inputs passed, pleae check your data', 422);
+        const error =  new HttpError('Invalid inputs passed, please check your data', 422);
         return next(error);
     }
-
     const { name, email, password } = req.body;
 
     let existingUser;
@@ -57,11 +57,21 @@ export const signup = async (req, res, next) => {
     }
     catch (err) {
         const error = new HttpError('Signing up failed, please try again', 500);
-        return next(err);
+        return next(error);
     }
 
-
-    res.status(201).json({user: createdUser.toObject({getters: true})});
+    let token;
+    try {
+        token = jwt.sign(
+            {userId: createdUser.id, email: createdUser.email}, 
+            'secret',
+             {expiresIn: '1h'});
+    } catch (err){
+        const error = new HttpError('Signing up failed, please try again', 500);
+        return next(error);
+    }
+    
+    res.status(201).json({userId: createdUser.id, email: createdUser.email, token: token});
 
 };
 
@@ -97,5 +107,17 @@ export const login = async (req, res, next) => {
         return next(error);
     }
 
-    res.json({message: 'Logged in!', user: existingUser.toObject({getters: true})});
+    let token;
+    try {
+        token = jwt.sign(
+            {userId: existingUser.id, email: existingUser.email}, 
+            'secret',
+             {expiresIn: '1h'});
+        
+    } catch (err){
+        const error = new HttpError('Loggin in failed, please try again', 500);
+        return next(error);
+    }
+
+    res.json({userId: existingUser.id, email: existingUser.email, token: token});
 };

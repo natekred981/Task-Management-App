@@ -57,7 +57,7 @@ export const postNewTask = async (req, res, next) => {
 
     const errrors = validationResult(req);
     if (!errrors.isEmpty()){
-        const error =  new HttpError('Invalid inputs passed, pleae check your data', 422);
+        const error =  new HttpError('Invalid inputs passed, please check your data', 422);
         return next(error);
     }
     const {title, description, creator } = req.body;

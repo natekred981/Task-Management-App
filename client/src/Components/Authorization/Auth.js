@@ -72,8 +72,8 @@ const Auth = () => {
             'Content-Type': 'application/json'
           }
         );
-        auth.login(responseData.user.id);
-        history.push(`/${responseData.user.id}/tasks`)
+        auth.login(responseData.userId, responseData.token);
+        history.push(`/${responseData.userId}/tasks`)
         //history.push(`/${responseData.userId}/tasks`)
       } catch (err) {}
     } else {
@@ -91,7 +91,7 @@ const Auth = () => {
           }
         );
 
-        auth.login(responseData.user.id);
+        auth.login(responseData.userId);
 
       } catch (err) {}
     }

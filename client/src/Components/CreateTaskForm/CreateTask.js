@@ -42,7 +42,10 @@ const CreateTask = (props) => {
             description: formState.inputs.description.value,
             creator: auth.userId
           }),
-          {'Content-Type': 'application/json'}
+          new Headers({
+            'Authorization': 'bearer ' + auth.token, 
+            'Content-Type': 'application/json'
+        })
         );
         history.push(`/${auth.userId}/tasks`);
     }
