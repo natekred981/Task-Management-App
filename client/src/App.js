@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom';
 import HomePage from "./Components/Dashboard/HomePage.js";
 import CreateTask from "./Components/CreateTaskForm/CreateTask.js";
@@ -15,15 +15,26 @@ function App() {
   const login = useCallback((uid, token) =>{
     setToken(token);
     setUserId(uid);
+    localStorage.setItem(
+      'userData',
+       JSON.stringify({ userId: uid, token: token}))
   }, []);
   const logout = useCallback(() => {
     setToken(null);
     setUserId(null);
   }, []);
 
+  useEffect(() => {
+    const storedData = JSON.parse(localStorage.getItem('userData'));
+    if (storedData && storedData.token){
+      login(storedData.userId, storedData.token);
+    }
+  }, [login]);
+
   let routes;
 
   if (token){
+    const storedData = JSON.parse(localStorage.getItem('userData'));
     routes = (
       <Switch>
           <Route path="/:userId/tasks" exact>
@@ -35,7 +46,7 @@ function App() {
           <Route path="/update/:taskId">
             <UpdateTask />
           </Route>
-          <Redirect to="/" />
+          <Redirect to={`/${storedData.userId}/tasks`} />
       </Switch>
     );
   }

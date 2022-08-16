@@ -39,9 +39,11 @@ const UpdateTask = () => {
                 title: formState.inputs.title.value,
                 description: formState.inputs.description.value
             }),
-            {
+            new Headers({
+                'Authorization': 'bearer ' + auth.token, 
                 'Content-Type': 'application/json'
-            }
+            })
+            
             )
             history.push(`/${auth.userId}/tasks`)
         }

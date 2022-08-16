@@ -20,7 +20,12 @@ const Task = (props) => {
     setShowConfirmModal(false);
     try {
       await sendRequest(`http://localhost:4001/api/tasks/${props.id}`,
-                  'DELETE');
+                  'DELETE',
+                  null,
+                  new Headers({
+                    'Authorization': 'bearer ' + auth.token, 
+                    'Content-Type': 'application/json'
+                }));
       props.onDelete(props.id);
       history.push(`/${auth.userId}/tasks`);
     }
