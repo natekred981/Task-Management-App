@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { REACT_APP_BACKEND_URL } from '../../secret_file';
 import Button from '../../shared/components/UiElements/Button';
 import Card from '../../shared/components/UiElements/Card';
 import ErrorModal from '../../shared/components/UiElements/ErrorModal';
@@ -62,7 +63,7 @@ const Auth = () => {
     if (isLoginMode) {
       try {
         const responseData = await sendRequest(
-          'http://localhost:4001/api/user/login',
+          `${REACT_APP_BACKEND_URL}/user/login`,
           'POST',
           JSON.stringify({
             email: formState.inputs.email.value,
@@ -74,12 +75,11 @@ const Auth = () => {
         );
         auth.login(responseData.userId, responseData.token);
         history.push(`/${responseData.userId}/tasks`)
-        //history.push(`/${responseData.userId}/tasks`)
       } catch (err) {}
     } else {
       try {
         const responseData = await sendRequest(
-          'http://localhost:4001/api/user/signup',
+          `${REACT_APP_BACKEND_URL}/user/signup`,
           'POST',
           JSON.stringify({
             name: formState.inputs.name.value,

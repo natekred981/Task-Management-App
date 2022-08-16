@@ -5,7 +5,7 @@ import bodyParser from "body-parser";
 import HttpError from "./models/http-error.js";
 import cors from 'cors';
 import signup_router from "./routes/signup-routes.js";
-
+import { DB_NAME, DB_PASSWORD, DB_USER } from "./secret_file.js";
 //this file serves the backend, connects the backend to the database, uses cors
 
 const app = express();
@@ -35,8 +35,7 @@ app.use((error, req, res, next) => { //function will execute if any middleware g
     res.json({message: error.message || "An unknown error occured!"});
 });
 
-
-const CONNECT_URL = 'mongodb+srv://natekred2:043bTdJmD7cpUbqr@cluster0.rjuqp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const CONNECT_URL = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.rjuqp.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`;
 mongoose.connect(CONNECT_URL)
 .then(() => {
     app.listen(4001);

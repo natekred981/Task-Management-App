@@ -9,6 +9,7 @@ import { AuthContext } from "../../shared/context/auth-context";
 import ErrorModal from "../../shared/components/UiElements/ErrorModal";
 import LoadingSpinner from "../../shared/components/UiElements/LoadingSpinner";
 import { useHistory } from "react-router-dom";
+import { REACT_APP_BACKEND_URL } from "../../secret_file";
 
 
 
@@ -35,7 +36,7 @@ const CreateTask = (props) => {
     e.preventDefault();
     try {
        await sendRequest(
-        'http://localhost:4001/api/tasks', 
+        `${REACT_APP_BACKEND_URL}/tasks`, 
           'POST',
           JSON.stringify({
             title: formState.inputs.title.value,
