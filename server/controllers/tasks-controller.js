@@ -60,16 +60,16 @@ export const postNewTask = async (req, res, next) => {
         const error =  new HttpError('Invalid inputs passed, please check your data', 422);
         return next(error);
     }
-    const {title, description, creator } = req.body;
+    const {title, description } = req.body;
     const createdTask = new Task({
         title,
         description,
-        creator
+        creator: req.userData.userId
     });
 
     let User;
     try {
-        User = await user.findById(creator);
+        User = await user.findById(req.userData.userId);
     }
     catch (err){
         const error = new HttpError('Not a valid user!', 500);

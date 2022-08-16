@@ -3,6 +3,7 @@ import HttpError from '../models/http-error.js';
 import user from '../models/user.js';
 import bcrypt from 'bcryptjs';
 import jwt from "jsonwebtoken";
+import { secret } from '../secret_file.js';
 
 
 
@@ -64,7 +65,7 @@ export const signup = async (req, res, next) => {
     try {
         token = jwt.sign(
             {userId: createdUser.id, email: createdUser.email}, 
-            'secret',
+            secret,
              {expiresIn: '1h'});
     } catch (err){
         const error = new HttpError('Signing up failed, please try again', 500);
@@ -111,7 +112,7 @@ export const login = async (req, res, next) => {
     try {
         token = jwt.sign(
             {userId: existingUser.id, email: existingUser.email}, 
-            'secret',
+            secret,
              {expiresIn: '1h'});
         
     } catch (err){

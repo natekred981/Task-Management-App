@@ -3,3 +3,6 @@
 
 # misc
 .DS_Store
+
+#files
+secret_file.js
