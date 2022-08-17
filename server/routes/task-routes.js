@@ -3,14 +3,17 @@ import { check } from 'express-validator';
 import jwt from 'jsonwebtoken';
 import { deleteTask, getTaskbyId, getTasksByUserId, postNewTask, updateTask } from '../controllers/tasks-controller.js';
 import HttpError from '../models/http-error.js';
-import { JWT_KEY } from '../secret_file.js';
+import dotenv from 'dotenv';
+dotenv.config();
+
+
 const check_auth = (req, res, next) => {
     try {
         const token = req.headers.authorization.split(' ')[1];
         if (!token) {
             throw new Error('Authentication Failed!!');
         }
-        const decoded_token = jwt.verify(token, JWT_KEY); //we are validating the token, and then adding data to the request
+        const decoded_token = jwt.verify(token, process.env.JWT_KEY); //we are validating the token, and then adding data to the request
         req.userData = { userId: decoded_token.userId };
         next();
     } catch (err) {

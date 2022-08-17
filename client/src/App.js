@@ -5,6 +5,7 @@ import MainNavigation from "./shared/components/Navigation/MainNavigation.js";
 import LoadingSpinner from "./shared/components/UiElements/LoadingSpinner.js";
 import { AuthContext } from "./shared/context/auth-context.js";
 import useAuth from "./shared/hooks/auth-hook.js";
+//import webpack from 'webpack';
 //import HomePage from "./Components/Dashboard/HomePage.js";
 //import CreateTask from "./Components/CreateTaskForm/CreateTask.js";
 //import UpdateTask from "./Components/CreateTaskForm/UpdateTask.js";
@@ -18,8 +19,9 @@ const Auth = React.lazy(() => import('./Components/Authorization/Auth.js'));
 function App() {
   const { token, login, logout, userId } = useAuth();
   let routes;
-
+  
   if (token){
+
       routes = (
         <Switch>
             <Route path="/:userId/tasks" exact>

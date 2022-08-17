@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
-import { REACT_APP_BACKEND_URL } from "../../secret_file";
 import Card from "../../shared/components/UiElements/Card";
 import ErrorModal from "../../shared/components/UiElements/ErrorModal";
 import LoadingSpinner from "../../shared/components/UiElements/LoadingSpinner";
@@ -15,7 +14,7 @@ const HomePage = () => {
     useEffect(() => {
         const fetchUsers = async () => {
           try {
-          const response = await sendRequest(`${REACT_APP_BACKEND_URL}/tasks/${userId}`);
+          const response = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/tasks/${userId}`);
           setLoadedTasks(response.tasks);        
         } catch (err) {};
       };

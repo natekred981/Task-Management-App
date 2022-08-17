@@ -5,4 +5,4 @@
 .DS_Store
 
 #config
-secret_file.js
+.env

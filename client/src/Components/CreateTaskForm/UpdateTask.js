@@ -10,7 +10,6 @@ import { useHttpClient } from "../../shared/hooks/http-hook";
 import { VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE } from "../../shared/utils/validators";
 import './CreateTask.css';
 import { AuthContext } from "../../shared/context/auth-context";
-import { REACT_APP_BACKEND_URL } from "../../secret_file";
 
 
 
@@ -34,7 +33,7 @@ const UpdateTask = () => {
     const updateSubmitHandler = async e => {
         e.preventDefault();
         try {
-            await sendRequest(`${REACT_APP_BACKEND_URL}/tasks/${taskId}`,
+            await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/tasks/${taskId}`,
             'PATCH',
             JSON.stringify({
                 title: formState.inputs.title.value,
@@ -56,7 +55,7 @@ const UpdateTask = () => {
         const fetchTask = async() => {
             try{
                 const responseData = await sendRequest
-                        (`${REACT_APP_BACKEND_URL}/tasks/user/${taskId}`); 
+                        (`${process.env.REACT_APP_BACKEND_URL}/tasks/user/${taskId}`); 
                 setLoadedTask(responseData.task);
                 setFormData({
                     title: {

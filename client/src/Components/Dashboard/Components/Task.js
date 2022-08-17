@@ -8,7 +8,6 @@ import { useHttpClient } from "../../../shared/hooks/http-hook";
 import ErrorModal from "../../../shared/components/UiElements/ErrorModal";
 import LoadingSpinner from "../../../shared/components/UiElements/LoadingSpinner";
 import { useHistory } from "react-router-dom";
-import { REACT_APP_BACKEND_URL } from "../../../secret_file";
 
 const Task = (props) => {
   const auth = useContext(AuthContext);
@@ -20,7 +19,7 @@ const Task = (props) => {
   const confirmDeleteHandler = async () => {
     setShowConfirmModal(false);
     try {
-      await sendRequest(`${REACT_APP_BACKEND_URL}/tasks/${props.id}`,
+      await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/tasks/${props.id}`,
                   'DELETE',
                   null,
                   new Headers({

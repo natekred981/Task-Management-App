@@ -3,7 +3,7 @@
   }
 
   .task-item__content{
-    padding: 0
+    padding: 0 !important
   }
 
   .task-item_info {
