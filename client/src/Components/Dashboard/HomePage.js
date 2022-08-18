@@ -30,6 +30,10 @@ const HomePage = () => {
            <div className="center"><LoadingSpinner /></div> 
       );
     }
+
+    if (loadedTasks && loadedTasks.length === 0) {
+      return <Card>No Ongoing Tasks</Card>
+    }
     
     return (
       <>

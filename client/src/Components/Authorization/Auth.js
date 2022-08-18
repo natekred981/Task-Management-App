@@ -90,7 +90,8 @@ const Auth = () => {
           }
         );
 
-        auth.login(responseData.userId);
+        auth.login(responseData.userId, responseData.token);
+        history.push(`/${responseData.userId}/create/task`);
 
       } catch (err) {}
     }
