@@ -5,6 +5,7 @@ import bodyParser from "body-parser";
 import HttpError from "./models/http-error.js";
 import cors from 'cors';
 import signup_router from "./routes/signup-routes.js";
+import { DB_NAME, DB_PASSWORD, DB_USER } from "./secret_file.js";
 import dotenv from 'dotenv';
 dotenv.config();
 
